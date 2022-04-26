@@ -2,7 +2,7 @@
 
 This ASIC was designed by members of the [Zero to ASIC course](https://zerotoasiccourse.com).
 
-This submission was configured and built by the [multi project tools](https://github.com/mattvenn/multi_project_tools) at commit [4e86949fa2af9128048d1710b27999bb63b35e1d](https://github.com/mattvenn/multi_project_tools/commit/4e86949fa2af9128048d1710b27999bb63b35e1d).
+This submission was configured and built by the [multi project tools](https://github.com/mattvenn/multi_project_tools) at commit [e697292fadbe114071dfa063e01ffe41c0fa5b10](https://github.com/mattvenn/multi_project_tools/commit/e697292fadbe114071dfa063e01ffe41c0fa5b10).
 
     # clone all repos, and include support for shared OpenRAM
     ./multi_tool.py --clone-repos --clone-shared-repos --create-openlane-config --copy-gds --copy-project --openram
@@ -28,4 +28,13 @@ This submission was configured and built by the [multi project tools](https://gi
 * Description: arbitary function generator, using shared RAM as the output data
 
 ![Function generator](pics/function_generator.png)
+
+## Cpr Assistant
+
+* Author: Zorkan ERKAN
+* Github: https://github.com/zorkan/cpr
+* commit: 4e4c41917683f00b41689a5baa02fdd8e6fe70e1
+* Description: Professional CPR Assistant. Support AHA Standarts
+
+![Cpr Assistant](pics/cpr.png)
 
