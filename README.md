@@ -30,6 +30,15 @@ This submission was configured and built by the [multi project tools](https://gi
 
 ![Function generator](pics/function_generator.png)
 
+## CPR
+
+* Author: Zorkan ERKAN
+* Github: https://github.com/zorkan/cpr
+* commit: d0afa2172ca45b279d84b8da508d2f608b6ca1b5
+* Description: Developed in accordance with the Aha Standard.
+
+![CPR](pics/cpr.png)
+
 ## instrumented adder - behavioural
 
 * Author: Matt Venn & Teo
