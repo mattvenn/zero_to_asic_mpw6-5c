@@ -88,17 +88,17 @@ module user_project_wrapper #(
     // split remaining 96 logic analizer wires into 3 chunks
     wire [31: 0] la1_data_in, la1_data_out, la1_oenb;
     assign la1_data_in = la_data_in[63:32];
-    assign la1_data_out = la_data_out[63:32];
+    assign la_data_out[63:32] = la1_data_out;
     assign la1_oenb = la_oenb[63:32];
 
     wire [31: 0] la2_data_in, la2_data_out, la2_oenb;
     assign la2_data_in = la_data_in[95:64];
-    assign la2_data_out = la_data_out[95:64];
+    assign la_data_out[95:64] = la2_data_out;
     assign la2_oenb = la_oenb[95:64];
 
     wire [31: 0] la3_data_in, la3_data_out, la3_oenb;
     assign la3_data_in = la_data_in[127:96];
-    assign la3_data_out = la_data_out[127:96];
+    assign la_data_out[127:96] = la3_data_out;
     assign la3_oenb = la_oenb[127:96];
 
 
@@ -298,21 +298,6 @@ module user_project_wrapper #(
         .rambus_wb_dat_i (rambus_wb_dat_i[31:0])
     );
 
-    wrapped_cpr wrapped_cpr_12(
-        `ifdef USE_POWER_PINS
-        .vccd1 (vccd1),
-        .vssd1 (vssd1),
-        `endif
-        .wb_clk_i (wb_clk_i),
-        .active (active[12]),
-        .la1_data_in (la1_data_in[31:0]),
-        .la1_data_out (la1_data_out[31:0]),
-        .la1_oenb (la1_oenb[31:0]),
-        .io_in (io_in[37:0]),
-        .io_out (io_out[37:0]),
-        .io_oeb (io_oeb[37:0])
-    );
-
     wrapped_instrumented_adder_behav wrapped_instrumented_adder_behav_2(
         `ifdef USE_POWER_PINS
         .vccd1 (vccd1),
@@ -401,6 +386,21 @@ module user_project_wrapper #(
         .la3_data_in (la3_data_in[31:0]),
         .la3_data_out (la3_data_out[31:0]),
         .la3_oenb (la3_oenb[31:0])
+    );
+
+    wrapped_PrimitiveCalculator wrapped_PrimitiveCalculator_7(
+        `ifdef USE_POWER_PINS
+        .vccd1 (vccd1),
+        .vssd1 (vssd1),
+        `endif
+        .wb_clk_i (wb_clk_i),
+        .active (active[7]),
+        .la1_data_in (la1_data_in[31:0]),
+        .la1_data_out (la1_data_out[31:0]),
+        .la1_oenb (la1_oenb[31:0]),
+        .io_in (io_in[37:0]),
+        .io_out (io_out[37:0]),
+        .io_oeb (io_oeb[37:0])
     );
 
     // end of module instantiation

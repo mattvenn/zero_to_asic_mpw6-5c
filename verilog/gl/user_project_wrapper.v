@@ -1157,7 +1157,7 @@ module user_project_wrapper (user_clock2,
     \rambus_wb_sel_o[2] ,
     \rambus_wb_sel_o[1] ,
     \rambus_wb_sel_o[0] }));
- wrapped_cpr wrapped_cpr_12 (.active(la_data_in[12]),
+ wrapped_PrimitiveCalculator wrapped_PrimitiveCalculator_7 (.active(la_data_in[7]),
     .vccd1(vccd1),
     .vssd1(vssd1),
     .wb_clk_i(wb_clk_i),
