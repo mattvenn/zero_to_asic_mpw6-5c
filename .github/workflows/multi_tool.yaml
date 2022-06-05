@@ -35,6 +35,13 @@ jobs:
         cache: 'pip'
     - run: pip install -r $HOME/multi_project_tools/requirements.txt
 
+    # install riscv gcc
+    - name: riscv gcc
+    - run: |
+        cd $HOME
+        wget https://static.dev.sifive.com/dev-tools/riscv64-unknown-elf-gcc-8.3.0-2020.04.1-x86_64-linux-ubuntu14.tar.gz
+        tar -xzf riscv64-unknown-elf-gcc-8.3.0-2020.04.1-x86_64-linux-ubuntu14.tar.gz
+
     # pwd
     - name: pwd
       run: |
