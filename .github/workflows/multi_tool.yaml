@@ -67,8 +67,8 @@ jobs:
     - name: test gds
       run: python $HOME/multi_project_tools/multi_tool.py --test-gds
 
-    - name: test prove
-      run: python $HOME/multi_project_tools/multi_tool.py --prove-tristate
+#    - name: test prove
+#      run: python $HOME/multi_project_tools/multi_tool.py --prove-tristate
 
     - name: test ports
       run: python $HOME/multi_project_tools/multi_tool.py --test-ports
@@ -83,14 +83,14 @@ jobs:
 #    - name: lvs
 #      run: python ./multi_tool.py --test-lvs --local github_local.yaml
 
-# needs pdk
-    - name: tristate-z
-      run: python $HOME/multi_project_tools/multi_tool.py --test-tristate-z
+# needs pdk - and local directory from multi_project
+#    - name: tristate-z
+#      run: python $HOME/multi_project_tools/multi_tool.py --test-tristate-z
 
     - name: docs
       run: python $HOME/multi_project_tools/multi_tool.py --generate-doc --openram
     
-    # copy single project for now
+    # install projects
     - name: install project
       run: python $HOME/multi_project_tools/multi_tool.py --create-openlane-config --copy-project --openram --copy-gds
 
@@ -98,6 +98,7 @@ jobs:
     - name: caravel test
       run: python $HOME/multi_project_tools/multi_tool.py --test-caravel
 
+    # build gds
     - name: user project wrapper GDS
       run: make user_project_wrapper
 
