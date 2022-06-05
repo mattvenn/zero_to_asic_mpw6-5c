@@ -65,28 +65,28 @@ jobs:
         python $HOME/multi_project_tools/multi_tool.py --clone-repos --clone-shared-repos --openram 
 
     # tests
-#    - name: test gds
-#      run: python ./multi_tool.py --test-gds --local github_local.yaml
-#
-#    - name: test ports
-#      run: python ./multi_tool.py --test-ports --local github_local.yaml
-#
-#    - name: test module
-#      run: python ./multi_tool.py --test-module --local github_local.yaml
-#
-#    - name: prove wrapper
-#      run: python ./multi_tool.py --prove-wrapper --local github_local.yaml
+    - name: test gds
+      run: python ./multi_tool.py --test-gds --local github_local.yaml
+
+    - name: test ports
+      run: python ./multi_tool.py --test-ports --local github_local.yaml
+
+    - name: test module
+      run: python ./multi_tool.py --test-module --local github_local.yaml
+
+    - name: prove wrapper
+      run: python ./multi_tool.py --prove-wrapper --local github_local.yaml
 
 # needs netgen
 #    - name: lvs
 #      run: python ./multi_tool.py --test-lvs --local github_local.yaml
 
 # needs pdk
-#    - name: tristate-z
-#      run: python ./multi_tool.py --test-tristate-z --local github_local.yaml
+    - name: tristate-z
+      run: python ./multi_tool.py --test-tristate-z --local github_local.yaml
 
-#    - name: docs
-#      run: python ./multi_tool.py --generate-doc --local github_local.yaml
+    - name: docs
+      run: python ./multi_tool.py --generate-doc --local github_local.yaml
     
     # copy single project for now
     - name: install project
@@ -100,3 +100,21 @@ jobs:
 
     - name: user project wrapper GDS
       run: make user_project_wrapper
+
+    - name: precheck
+      run: |
+        make precheck
+        make run-precheck
+
+    # archive the gds and final report for the user project wrapper
+    - name: Archive Wrapper GDS
+      uses: actions/upload-artifact@v2
+      with:
+          name: Wrapper GDS
+          path: gds/user_project_wrapper.gds
+
+    - name: Archive Wrapper Signoff
+      uses: actions/upload-artifact@v2
+      with:
+          name: Wrapper Report
+          path: openlane/user_project_wrapper/runs/user_project_wrapper/reports/final_summary_report.csv
