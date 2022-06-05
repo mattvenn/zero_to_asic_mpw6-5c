@@ -14,6 +14,10 @@ jobs:
     - name: checkout repo
       uses: actions/checkout@v2
 
+    # install caravel submodule for simulation later
+    - name: install caravel
+      run: make setup
+
     # use mpw6 for pdk as it's much faster
     - name: pdk & openlane
       run: |
