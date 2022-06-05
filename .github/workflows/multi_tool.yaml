@@ -88,7 +88,7 @@ jobs:
 #      run: python $HOME/multi_project_tools/multi_tool.py --test-tristate-z
 
     - name: docs
-      run: python $HOME/multi_project_tools/multi_tool.py --generate-doc --openram
+      run: python $HOME/multi_project_tools/multi_tool.py --generate-doc --openram --force
     
     # install projects
     - name: install project
