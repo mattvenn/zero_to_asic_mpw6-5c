@@ -82,6 +82,7 @@ jobs:
         python $HOME/multi_project_tools/multi_tool.py --create-openlane-config --copy-project --openram --project 0
 
     # run the caravel test
+    - name: caravel test
       run: |
         python $HOME/multi_project_tools/multi_tool.py --test-caravel --project 0
 
