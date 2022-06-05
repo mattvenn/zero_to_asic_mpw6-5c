@@ -65,7 +65,7 @@ projects:
 
     cpr:
         repo:   'https://github.com/zorkan/cpr'
-        commit: 'fdabd231df3df0346953be45fa938631697276a9'
+        commit: 'd0afa2172ca45b279d84b8da508d2f608b6ca1b5'
         pos:    '350 1700 N'
 
     wrapped_instrumented_adder_behav:
