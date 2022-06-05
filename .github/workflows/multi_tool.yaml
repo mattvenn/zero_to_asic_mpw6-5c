@@ -39,6 +39,7 @@ jobs:
     - name: pwd
       run: |
         pwd # /home/runner/work/multi_project_tools/multi_project_tools
+        ls /home/runner/caravel_user_project/mgmt_core_wrapper/
 
     # install oss fpga tools
     - name: install oss-cad-suite
