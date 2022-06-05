@@ -1,6 +1,6 @@
 name: multi_tool
 # either manually started, or on a schedule
-on: [ push ]
+on: [ push, workflow_dispatch ]
 jobs:
   multi_tool:
     env:
