@@ -16,7 +16,7 @@ jobs:
 
     # install caravel submodule for simulation later
     - name: install caravel
-      run: make setup
+      run: make install
 
     # use mpw6 for pdk as it's much faster
     - name: pdk & openlane
