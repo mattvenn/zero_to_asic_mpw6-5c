@@ -72,8 +72,8 @@ jobs:
     - name: test gds
       run: python $HOME/multi_project_tools/multi_tool.py --test-gds
 
-#    - name: test prove
-#      run: python $HOME/multi_project_tools/multi_tool.py --prove-tristate
+    - name: test prove
+      run: python $HOME/multi_project_tools/multi_tool.py --prove-tristate
 
     - name: test ports
       run: python $HOME/multi_project_tools/multi_tool.py --test-ports
