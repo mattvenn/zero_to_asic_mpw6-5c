@@ -61,21 +61,20 @@ jobs:
 
     # fetch the repos
     - name: fetch all
-      run: |
-        python $HOME/multi_project_tools/multi_tool.py --clone-repos --clone-shared-repos --openram 
+      run: python $HOME/multi_project_tools/multi_tool.py --clone-repos --clone-shared-repos --openram 
 
     # tests
     - name: test gds
-      run: python ./multi_tool.py --test-gds --local github_local.yaml
+      run: python $HOME/multi_project_tools/multi_tool.py --test-gds
 
     - name: test ports
-      run: python ./multi_tool.py --test-ports --local github_local.yaml
+      run: python $HOME/multi_project_tools/multi_tool.py --test-ports
 
     - name: test module
-      run: python ./multi_tool.py --test-module --local github_local.yaml
+      run: python $HOME/multi_project_tools/multi_tool.py --test-module
 
     - name: prove wrapper
-      run: python ./multi_tool.py --prove-wrapper --local github_local.yaml
+      run: python $HOME/multi_project_tools/multi_tool.py --prove-wrapper
 
 # needs netgen
 #    - name: lvs
@@ -83,20 +82,18 @@ jobs:
 
 # needs pdk
     - name: tristate-z
-      run: python ./multi_tool.py --test-tristate-z --local github_local.yaml
+      run: python $HOME/multi_project_tools/multi_tool.py --test-tristate-z
 
     - name: docs
-      run: python ./multi_tool.py --generate-doc --local github_local.yaml
+      run: python $HOME/multi_project_tools/multi_tool.py --generate-doc --openram
     
     # copy single project for now
     - name: install project
-      run: |
-        python $HOME/multi_project_tools/multi_tool.py --create-openlane-config --copy-project --openram --copy-gds
+      run: python $HOME/multi_project_tools/multi_tool.py --create-openlane-config --copy-project --openram --copy-gds
 
     # run the caravel test
     - name: caravel test
-      run: |
-        python $HOME/multi_project_tools/multi_tool.py --test-caravel
+      run: python $HOME/multi_project_tools/multi_tool.py --test-caravel
 
     - name: user project wrapper GDS
       run: make user_project_wrapper
