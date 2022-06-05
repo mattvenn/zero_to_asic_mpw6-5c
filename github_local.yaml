@@ -1,0 +1,24 @@
+project_directory: "/home/runner/work/"
+
+caravel:
+    root:           .
+    gl_dir:         verilog/gl
+    test_dir:       verilog/dv
+    rtl_dir:        verilog/rtl
+    includes_dir:   verilog/includes/
+    mgmt_root:      mgmt_core_wrapper/
+    config:         config.tcl
+
+env: # used for simulation
+    GCC_PATH:       /opt/riscv64-unknown-elf-gcc-8.3.0-2020.04.1-x86_64-linux-ubuntu14/bin/
+    GCC_PREFIX:     riscv64-unknown-elf
+    PDK_PATH:       ../pdk/sky130A
+    PDK_ROOT:       ../pdk
+    OPENLANE:       ../openlane
+    PDK:            sky130A
+
+lvs:
+    PDK_PATH:       ../pdk/sky130A 
+    PDK_ROOT:       ../pdk/
+    OPENLANE:       ../openlane
+

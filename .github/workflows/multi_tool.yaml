@@ -1,0 +1,89 @@
+name: multi_tool
+# either manually started, or on a schedule
+on: [ push ]
+jobs:
+  multi_tool:
+    env:
+        OPENLANE_ROOT:  /home/runner/openlane
+        PDK_ROOT:       /home/runner/pdk
+        PDK:            sky130A
+    # ubuntu
+    runs-on: ubuntu-latest
+    steps:
+    # need the repo checked out
+    - name: checkout repo
+      uses: actions/checkout@v2
+
+    # use mpw6 for pdk as it's much faster
+    - name: pdk & openlane
+      run: |
+        cd $HOME
+        git clone -b mpw-6c https://github.com/efabless/caravel_user_project.git
+        cd caravel_user_project/
+        make setup
+
+    - name: multi tools
+      run: |
+        cd $HOME
+        git clone https://github.com/mattvenn/multi_project_tools.git
+
+    # need python
+    - name: setup python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.7.7'
+        cache: 'pip'
+    - run: pip install -r $HOME/multi_project_tools/requirements.txt
+
+    # pwd
+    - name: pwd
+      run: |
+        pwd # /home/runner/work/multi_project_tools/multi_project_tools
+
+    # install oss fpga tools
+    - name: install oss-cad-suite
+      uses: YosysHQ/setup-oss-cad-suite@v1
+    - run: | 
+        yosys --version
+        iverilog -V
+
+    # fetch the repos
+    - name: fetch all
+      run: |
+        python $HOME/multi_project_tools/multi_tool.py --clone-repos --clone-shared-repos --openram 
+
+    # tests
+#    - name: test gds
+#      run: python ./multi_tool.py --test-gds --local github_local.yaml
+#
+#    - name: test ports
+#      run: python ./multi_tool.py --test-ports --local github_local.yaml
+#
+#    - name: test module
+#      run: python ./multi_tool.py --test-module --local github_local.yaml
+#
+#    - name: prove wrapper
+#      run: python ./multi_tool.py --prove-wrapper --local github_local.yaml
+
+# needs netgen
+#    - name: lvs
+#      run: python ./multi_tool.py --test-lvs --local github_local.yaml
+
+# needs pdk
+#    - name: tristate-z
+#      run: python ./multi_tool.py --test-tristate-z --local github_local.yaml
+
+#    - name: docs
+#      run: python ./multi_tool.py --generate-doc --local github_local.yaml
+    
+    # copy single project for now
+    - name: install project
+      run: |
+        python $HOME/multi_project_tools/multi_tool.py --create-openlane-config --copy-project --openram --project 0
+
+    # run the caravel test
+      run: |
+        python $HOME/multi_project_tools/multi_tool.py --test-caravel --project 0
+
+    - name: user project wrapper GDS
+      run: make user_project_wrapper
