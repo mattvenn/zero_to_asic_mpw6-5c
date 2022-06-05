@@ -91,12 +91,12 @@ jobs:
     # copy single project for now
     - name: install project
       run: |
-        python $HOME/multi_project_tools/multi_tool.py --create-openlane-config --copy-project --openram --project 0
+        python $HOME/multi_project_tools/multi_tool.py --create-openlane-config --copy-project --openram --copy-gds
 
     # run the caravel test
     - name: caravel test
       run: |
-        python $HOME/multi_project_tools/multi_tool.py --test-caravel --project 0
+        python $HOME/multi_project_tools/multi_tool.py --test-caravel
 
     - name: user project wrapper GDS
       run: make user_project_wrapper
